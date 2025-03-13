@@ -32,7 +32,7 @@
             <li class="nav-item"><p class="breadcrumbs mb-0 mt-2">
               <span class="mr-2"><a href="../index.html" class="text-white">Home <i class="ion-ios-arrow-forward"></i></a></span>
               <span class="mr-2"><a href="../index.html#projects-section" class="text-white">Projects <i class="ion-ios-arrow-forward"></i></a></span>
-              <span class="text-white">BicepMC</span>
+              <span style="color: #ffbd39;">BicepMC</span>
             </p></li>
           </ul>
         </div>
@@ -48,50 +48,103 @@
         </div>
         <div class="row">
           <div class="col-lg-8 ftco-animate">
-            <h2 class="mb-3">BicepMC Overview</h2>
-            <p>
-              Integration of Cosmological data from the Bicep telescope into popular simulation tool CosmoMC.
-            </p>
+            <div class="ftco-animate">
+              <h2 class="mb-3" style="color: #ffbd39;">BicepMC Overview</h2>
+              <p class="lead mb-4">
+                An undergraduate research project focused on integrating observational data from the BICEP telescope with CosmoMC, 
+                a Fortran-based cosmological parameter estimation tool, and developing a custom implementation for analyzing cosmic 
+                microwave background (CMB) data.
+              </p>
 
-            <h3 class="mb-3 mt-5">Technical Details</h3>
-            <p>
-              Tech Stack:
+              <hr class="my-4" style="border-color: rgba(255, 189, 57, 0.2);">
+
+              <p>
+                Working under Professor Brian Keating at UCSD, this project involved deep diving into CosmoMC's Fortran codebase
+                to enable integration with BICEP telescope data. The work included both utilizing the San Diego Supercomputer Center
+                for large-scale simulations and developing a smaller custom implementation combining various CMB data sources.
+              </p>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="ftco-animate">
+              <h3 class="mb-3 mt-5" style="color: #ffbd39;">Technical Implementation</h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <h4 class="h5 mb-3" style="color: rgba(255, 189, 57, 0.8);">Primary Components</h4>
+                  <ul>
+                    <li><strong>CosmoMC Integration:</strong> Modified Fortran codebase to accept BICEP telescope data formats</li>
+                    <li><strong>Automation:</strong> Python scripts for batch processing and simulation management</li>
+                    <li><strong>Custom Analysis:</strong> Mathematica implementation combining CAMB results with multiple data sources</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h4 class="h5 mb-3" style="color: rgba(255, 189, 57, 0.8);">Data Sources</h4>
+                  <ul>
+                    <li>BICEP2 CMB measurements</li>
+                    <li>POLARBEAR telescope data</li>
+                    <li>Publicly available supernova data</li>
+                    <li>CAMB simulation results</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="ftco-animate">
+              <h3 class="mb-3 mt-5" style="color: #ffbd39;">Key Challenges</h3>
+              <p>
+                The project involved several technical challenges:
+              </p>
               <ul>
-                <li>Fortran</li>
-                <li>Matlab</li>
-                <li>Python</li>
-                <li>Mathematica</li>
+                <li>Understanding and modifying complex Fortran codebase in CosmoMC</li>
+                <li>Configuring and running large-scale simulations on the San Diego Supercomputer</li>
+                <li>Processing and analyzing Markov Chain Monte Carlo (MCMC) data for cosmological parameter estimation</li>
+                <li>Developing a simplified custom implementation that could integrate multiple data sources</li>
               </ul>
-            </p>
+            </div>
 
-            <h3 class="mb-3 mt-5">Research Context</h3>
-            <!-- Add research context here -->
+            <div class="ftco-animate">
+              <h3 class="mb-3 mt-5" style="color: #ffbd39;">Learning Outcomes</h3>
+              <p>
+                This undergraduate research experience provided valuable insights into:
+              </p>
+              <ul>
+                <li>Advanced computational physics and cosmological parameter estimation</li>
+                <li>High-performance computing and large-scale data analysis</li>
+                <li>Integration of multiple data sources for scientific computing</li>
+                <li>Working with legacy scientific codebases</li>
+              </ul>
 
-            <h3 class="mb-3 mt-5">Implementation Details</h3>
-            <!-- Add implementation details here -->
-
-            <h3 class="mb-3 mt-5">Results & Impact</h3>
-            <!-- Add results and scientific impact here -->
+              <div class="alert mt-4" role="alert" style="background-color: rgba(255, 189, 57, 0.1); border-color: #ffbd39;">
+                <h4 class="alert-heading mb-2" style="color: #ffbd39;">Educational Impact</h4>
+                <p class="mb-0">This project provided hands-on experience with <span style="color: #ffbd39; font-weight: 600;">real-world cosmological data analysis</span> and high-performance computing applications in physics research.</p>
+              </div>
+            </div>
 
           </div>
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <h3 class="heading-sidebar">Project Info</h3>
+              <h3 class="heading-sidebar" style="color: #ffbd39;">Project Info</h3>
               <div class="categories">
-                <li>Duration: [Project Duration]</li>
-                <li>Role: [Your Role]</li>
-                <li>Institution: [Research Institution]</li>
-                <li>Status: [Current Status]</li>
+                <li><i class="icon-calendar"></i> Duration: 2014-2017</li>
+                <li><i class="icon-user"></i> Role: Undergraduate Research Assistant</li>
+                <li><i class="icon-building"></i> Institution: University of California San Diego</li>
+                <li><i class="icon-user"></i> Advisor: Prof. Brian Keating</li>
+                <li><i class="icon-check"></i> Status: Completed</li>
               </div>
             </div>
 
             <div class="sidebar-box ftco-animate">
-              <h3 class="heading-sidebar">Links</h3>
+              <h3 class="heading-sidebar" style="color: #ffbd39;">Technology</h3>
               <div class="categories">
-                <!-- Add relevant links here -->
-                <li><a href="#">Research Paper</a></li>
-                <li><a href="#">Code Repository</a></li>
-                <li><a href="#">Documentation</a></li>
+                <li><i class="icon-code"></i> Fortran (CosmoMC)</li>
+                <li><i class="icon-code"></i> Python</li>
+                <li><i class="icon-calculator"></i> Mathematica</li>
+                <li><i class="icon-cloud"></i> HPC (San Diego Supercomputer)</li>
+                <li><i class="icon-bar-chart"></i> MCMC Analysis</li>
+                <li><i class="icon-terminal"></i> Linux</li>
               </div>
             </div>
           </div>
