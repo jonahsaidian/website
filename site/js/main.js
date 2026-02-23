@@ -83,31 +83,18 @@
 	onePageClick();
 	
 
-	var carousel = function() {
-		$('.home-slider').owlCarousel({
-	    loop:true,
-	    autoplay: true,
-	    margin:0,
-	    animateOut: 'fadeOut',
-	    animateIn: 'fadeIn',
-	    nav:false,
-	    autoplayHoverPause: false,
-	    items: 1,
-	    navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
-	    responsive:{
-	      0:{
-	        items:1
-	      },
-	      600:{
-	        items:1
-	      },
-	      1000:{
-	        items:1
-	      }
-	    }
-		});
+	var heroSlider = function() {
+		var slides = document.querySelectorAll('.home-slider .slider-item');
+		if (!slides.length) return;
+		var current = 0;
+		slides[0].classList.add('active');
+		setInterval(function() {
+			slides[current].classList.remove('active');
+			current = (current + 1) % slides.length;
+			slides[current].classList.add('active');
+		}, 5000);
 	};
-	carousel();
+	heroSlider();
 
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
