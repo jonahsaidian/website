@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Farsi Transcriber - Jonah Saidian</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Farsi Transcriber — A live Farsi audio-to-text transcription tool built with Python, Streamlit, and OpenAI's gpt-4o-transcribe. A project by Jonah Saidian.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text y='.9em' font-size='90' font-family='sans-serif' fill='%23ffbd39'>J</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="../index.html">Jonah Saidian</a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav nav ml-auto">
+            <li class="nav-item"><p class="breadcrumbs mb-0 mt-2">
+              <span class="mr-2"><a href="../index.html" class="text-white">Home <i class="ion-ios-arrow-forward"></i></a></span>
+              <span class="mr-2"><a href="../index.html#projects-section" class="text-white">Projects <i class="ion-ios-arrow-forward"></i></a></span>
+              <span style="color: #ffbd39;">Farsi Transcriber</span>
+            </p></li>
+          </ul>
+        </div>
+	    </div>
+	  </nav>
+
+    <section class="ftco-section" style="padding-top: 8em;">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-10">
+            <img src="../images/farsi-transcriber.png" class="img-fluid rounded" alt="Farsi Transcriber">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+            <div class="ftco-animate">
+              <h2 class="mb-3" style="color: #ffbd39;">Live Farsi Audio Transcription Tool</h2>
+              <p class="lead mb-4">
+                A web app that transcribes Farsi (Persian) audio files to text — deployed live and handling real-world file sizes through intelligent chunked processing.
+              </p>
+
+              <hr class="my-4" style="border-color: rgba(255, 189, 57, 0.2);">
+
+              <p>
+                Farsi Transcriber was built to solve a practical problem: accurately converting spoken Farsi audio into clean, readable text. The app leverages OpenAI's <code>gpt-4o-transcribe</code> model — one of the most capable multilingual speech recognition models available — and wraps it in a clean, accessible Streamlit interface that anyone can use without technical knowledge.
+              </p>
+
+              <p>
+                A core challenge with audio transcription is handling large files reliably. Rather than attempting to upload multi-hundred-megabyte files directly to the API, the app uses <code>pydub</code> to split audio into 200-second chunks and transcribes them sequentially, showing live progress as each segment completes. This makes the tool robust even for long recordings like lectures or interviews.
+              </p>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="ftco-animate">
+              <h3 class="mb-3 mt-5" style="color: #ffbd39;">Technical Implementation</h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <h4 class="h5 mb-3" style="color: rgba(255, 189, 57, 0.8);">Architecture</h4>
+                  <ul>
+                    <li><strong>UI Layer:</strong> Streamlit app managing multi-step session state (API setup → upload → transcription → results)</li>
+                    <li><strong>Core Logic:</strong> Dedicated <code>api/transcriber.py</code> module handling chunking and OpenAI calls</li>
+                    <li><strong>Audio Processing:</strong> pydub + FFmpeg for format conversion and segmentation</li>
+                    <li><strong>Deployment:</strong> Containerized via Docker, live at <a href="https://farsi-transcriber.jonahsaidian.com/" target="_blank" style="color: #ffbd39;">farsi-transcriber.jonahsaidian.com</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h4 class="h5 mb-3" style="color: rgba(255, 189, 57, 0.8);">Processing Pipeline</h4>
+                  <ul>
+                    <li>User uploads audio file via drag-and-drop</li>
+                    <li>File loaded in a background thread with progress estimation</li>
+                    <li><code>chunk_audio()</code> splits into 200-second WAV segments</li>
+                    <li>Each segment sent to OpenAI with <code>language="fa"</code></li>
+                    <li>Transcribed text accumulates live in the UI</li>
+                    <li>Temp files cleaned up after each chunk</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="ftco-animate">
+              <h3 class="mb-3 mt-5" style="color: #ffbd39;">Features</h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <h4 class="h5" style="color: rgba(255, 189, 57, 0.8);">File Upload</h4>
+                      <p>Drag-and-drop support for MP3, MP4, MPEG, MPGA, M4A, WAV, and WEBM formats.</p>
+                    </li>
+                    <li class="mb-3">
+                      <h4 class="h5" style="color: rgba(255, 189, 57, 0.8);">Real-Time Progress</h4>
+                      <p>Live progress bar with time estimates and streaming transcription display as each chunk completes.</p>
+                    </li>
+                    <li class="mb-3">
+                      <h4 class="h5" style="color: rgba(255, 189, 57, 0.8);">Text Export</h4>
+                      <p>Download the full transcription as a <code>.txt</code> file with one click.</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <h4 class="h5" style="color: rgba(255, 189, 57, 0.8);">Chunked Processing</h4>
+                      <p>Handles large audio files reliably by processing in 200-second segments — no file size bottlenecks.</p>
+                    </li>
+                    <li class="mb-3">
+                      <h4 class="h5" style="color: rgba(255, 189, 57, 0.8);">Auto API Key</h4>
+                      <p>Reads <code>OPENAI_API_KEY</code> from environment or <code>.env</code>, with a fallback UI input field.</p>
+                    </li>
+                    <li class="mb-3">
+                      <h4 class="h5" style="color: rgba(255, 189, 57, 0.8);">Clean Reset</h4>
+                      <p>One-click restart clears all state and the file uploader, ready for a new transcription.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="ftco-animate">
+              <div class="alert mt-4" role="alert" style="background-color: rgba(255, 189, 57, 0.1); border-color: #ffbd39;">
+                <h4 class="alert-heading mb-2" style="color: #ffbd39;">Live Deployment</h4>
+                <p class="mb-0">The app is publicly accessible at <a href="https://farsi-transcriber.jonahsaidian.com/" target="_blank" style="color: #ffbd39; font-weight: 600;">farsi-transcriber.jonahsaidian.com</a> — built with <span style="color: #ffbd39; font-weight: 600;">OpenAI gpt-4o-transcribe</span> for state-of-the-art Farsi speech recognition.</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <h3 class="heading-sidebar" style="color: #ffbd39;">Project Info</h3>
+              <div class="categories">
+                <li><i class="icon-user"></i> Role: Solo Developer</li>
+                <li><i class="icon-check"></i> Status: Live</li>
+                <li><i class="icon-globe"></i> <a href="https://farsi-transcriber.jonahsaidian.com/" target="_blank" style="color: #ffbd39;">Live App</a></li>
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar" style="color: #ffbd39;">Technology</h3>
+              <div class="categories">
+                <li><i class="icon-code"></i> Python</li>
+                <li><i class="icon-code"></i> Streamlit</li>
+                <li><i class="icon-code"></i> OpenAI API</li>
+                <li><i class="icon-music"></i> pydub</li>
+                <li><i class="icon-terminal"></i> FFmpeg</li>
+                <li><i class="icon-cloud"></i> Docker</li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p><!-- Link back to your main page or copyright info --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+      </svg>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.waypoints.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/jquery.animateNumber.min.js"></script>
+    <script src="../js/scrollax.min.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
